@@ -1,0 +1,277 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html style="height:100%">
+<head>
+		<link rel="stylesheet" type="text/css" href="../../../plugins/css/component.css" />
+<link rel="stylesheet" type="text/css" href="../../../plugins/bootstrap/css/bootstrap.min.css" />
+<link href="../../../plugins/easyUI/css/easyui.css" rel="stylesheet" type="text/css"/>
+<link href="../../../css/investimplement/planreport/planreport.css" rel="stylesheet" type="text/css"/>
+<link rel="stylesheet" type="text/css" href="../../../plugins/layui-v2.2.5/css/layui.css">
+<link rel="stylesheet" type="text/css" href="../../../css/navigationtitle/navigationtitle.css" />
+<script src="../../../js/common/util.js" type="text/javascript"></script>
+
+<style type="text/css">
+	#modalColCondition p{
+		display: inline-block;
+	    height: 21px;
+    }
+</style>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>调整计划报表填报</title>
+
+</head>
+<body style="height:98%">
+	<div class="maintitle">
+		<span id="top_navigation" class="layui-breadcrumb"></span>
+	</div>
+     <div id="tb" style="height:73px;overflow:hidden;width:98%;margin: 10px">
+       		<div id="dcomboCompany" style="float:left;display: none;padding-top: 2px;margin-bottom:5px;">
+	       	    <LABEL id="tcomboCompany" ACCESSKEY="1">&nbsp;公司</LABEL>
+	            <input id="comboCompany" value="" size="12">
+            </div>
+            <div id="dcmbBuildProcess" style="float:left;display: none;padding-top: 2px;margin-bottom:5px;">
+	            <LABEL id="tcmbBuildProcess" ACCESSKEY="1">&nbsp;&nbsp;建设阶段</LABEL>
+	            <input id="cmbBuildProcess" value="" size="8">
+            </div>
+       		<div id="dcmbDataType" style="float:left;display: none;padding-top: 2px;margin-bottom:5px;">
+	       	    <LABEL id="tcmbDataType" ACCESSKEY="1">&nbsp;&nbsp;数据类型</LABEL>
+	            <input id="cmbDataType" value="" size="12">
+            </div>
+       		<div id="ddisEditedData" style="float:left;display: none;padding-top: 2px;margin-bottom:5px;">
+	       	    <LABEL id="tdisEditedData" ACCESSKEY="1">&nbsp;&nbsp;数据状态</LABEL>
+	            <input id="disEditedData" value="" size="12">
+            </div>
+            <div id="dvolList" style="float:left;display: none;padding-top: 2px;margin-bottom:5px;">
+	            <LABEL id="tvolList" ACCESSKEY="1">&nbsp;电压</LABEL>
+	            <input id="volList" value="" size="8">
+            </div>
+            <!-- 三年计划起始年 -->
+            <div id="dyearStart" class="threeyeartime" style="float:left;display: none;padding-top: 2px;margin-bottom:5px;">
+	            <LABEL id="tyearStart" ACCESSKEY="1" style="float:left;">&nbsp;三年计划起始年</LABEL>
+	            <input id="yearStart" class="Wdate" style="width:94px;height:23px;">
+            </div>
+            <div id="dnext2Year" class="threeyeartime" style="float:left;display: none;padding-top: 2px;margin-bottom:5px;">
+	            <LABEL id="tnext2Year" ACCESSKEY="1" style="float:left;">&nbsp;编制年份</LABEL>
+	            <input id="next2Year" class="Wdate" style="width:94px;height:23px;">
+            </div>
+            <div id="dcmbSeason" style="float:left;display: none;padding-top: 2px;margin-bottom:5px;">
+	            <LABEL id="tcmbSeason" ACCESSKEY="1">&nbsp;批次</LABEL>
+	            <input id="pc" value="" size="8">
+            </div>
+       		<div id="dcmbYear" style="float:left;display: none;padding-top: 2px;margin-bottom:5px;width: 110px">
+	       	    <LABEL id="tcmbYear" ACCESSKEY="1">&nbsp;&nbsp;年份</LABEL>
+	       	    <input type="text" style="height: 24px;float:none" class="Wdate" value="2019" id="cmbYear" onclick="WdatePicker({dateFmt:'yyyy',isShowToday:false});"/>
+            </div>
+       		<div id="dFjDownTime" style="float:left;display: none;padding-top: 2px;margin-bottom:5px;width: 271px">
+	       	    <LABEL i ACCESSKEY="1" style="float: left;">分解下达时间</LABEL>
+                <input id="fjxdtimeFrom" type="text" size="12" class="Wdate"  onFocus="WdatePicker({dateFmt:'yyyy-MM-dd'})" style="width:80px;height:21px;">&nbsp;  —
+                <input id="fjxdtimeTo" type="text" size="12" class="Wdate"  onFocus="WdatePicker({dateFmt:'yyyy-MM-dd'})" style="width:80px;height:21px;float: right;">
+            </div>
+            <!-- <button class="telekbtn pull-right"  id="closeTabBtn">关闭报表</button> -->
+            <!-- <div style="clear:both;"></div> -->
+       		<div id="dproList" style="float:left;display: none;padding-top: 2px;margin-bottom:5px;">
+	            <LABEL id="tproList" ACCESSKEY="1">&nbsp;资产归属</LABEL>
+	            <input id="proList" value="" size="12">
+            </div>
+       		<div id="dtzlb" style="float:left;display: none;padding-top: 2px;margin-bottom:5px;">
+            	<LABEL id="tcmbtzlb" ACCESSKEY="1">&nbsp;投资类别</LABEL>
+	            <input id="cmbtzlb" value="" size="12">
+            </div>
+       		<div id="dadjustPc" style="float:left;display: none;padding-top: 2px;margin-bottom:5px;">
+            	<LABEL id="tadjustPc" ACCESSKEY="1">&nbsp;调整批次</LABEL>
+	            <input id="adjustPc" value="" size="8">
+            </div>
+            <div style="clear:both;" id="cleardiv"></div>
+            <div id="ditemnameInput" style="float:left;display: none;padding-top: 2px;margin-bottom:5px;">
+	           	<LABEL id="titemnameInput" ACCESSKEY="1">&nbsp;项目名称</LABEL>
+	            <input id="itemnameInput" value="" size="12" style="width:110px;border-radius: 5px;border: 1px solid #95b8e7;">
+            </div>
+            <button class="telekbtn pull-left"  id="reportSearchBtn">查询</button>
+            <button class="telekbtn pull-left"  id="exportExcelBtn">导出报表</button>
+			<button class="telekbtn pull-left"  id="superChoose" data-toggle="modal" href ="#superChooseModal" style="display: none;">高级筛选</button>
+           	<button class="telekbtn pull-left"  id="collectCondition">汇总条件</button>
+			<!-- <button class="telekbtn pull-right"  id="pushToWordCenter">推送至文档中心</button> -->
+    </div>  
+    <hr style="border-top: 1px solid #95b8e7;margin-top: -4px;margin-bottom: 4px"/>
+    <div class="leftTree">
+    	 <ul id="reportTree" fit="true"></ul>
+    </div>
+    <div style="position: absolute; left: 375px;right: 0px;bottom: 0px;top: 121px;">
+    	 <table id="planReportGrid" style="height: 100%;width:100%"></table> 
+    </div>
+
+ 
+<div class="modal fade"  data-backdrop="static"  id="modalColCondition" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog" style="width:262px">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title" id="myModalLabel">汇总条件</h4>
+            </div>
+            <div class="modal-body">
+				<fieldset id="favoritecolor" style="margin-left: 10px">
+					<div id="disDisAll" class="9701 9051001  9051 9052 9052001 9002 9001 9060"><p><input name="hztjcheckbox" type="checkbox" id = "isDisAll" class="9701"> 全部显示</p></div>
+					<div id="disFundGroup" class="9701 9001 9060"><p><input name="hztjcheckbox" type="checkbox" id = "isFundGroup" class="9701" checked> 资金分组显示</p></div>
+					<div id="disFundFix"><p><input name="hztjcheckbox" type="checkbox" id = "isFundFix"> 固定资金来源</p></div>
+					<div id="disPackKindGroup" class="9018"><p><input name="hztjcheckbox" type="checkbox" id = "isPackKindGroup"> 投资小类分类</p></div>
+					<div id="disDisLastYearPlan" class="9001 9060"><p><input name="hztjcheckbox" type="checkbox" id = "isDisLastYearPlan"> 显示上一年全部数据</p></div>
+					<!--<div id="disDisPack"><p><input name="hztjcheckbox" type="checkbox" id = "isDisPack"> 只显示项目包</p></div>-->
+					<!--<div id="disNotShowPack"><p><input name="hztjcheckbox" type="checkbox" id = "isNotShowPack"> 不显示项目包</p></div>-->
+					<div id="disNotDisPrj"  class="9701 9002 9001 9018 9009 9060"><p><input name="hztjcheckbox" checked type="checkbox" id = "showsubrow"> 不显示单项工程</p></div>
+					<!--<div id="disPackDisVolGM"><p><input name="hztjcheckbox" type="checkbox" id = "isPackDisVolGM"> 项目包分电压等级显示建设规模</p></div>
+					<div id="disNotDisNotPutPack"><p><input name="hztjcheckbox" type="checkbox" id = "isNotDisNotPutPack"> 不显示没有投产计划项目包</p></div>-->
+					<div id="disNotDisVolGM"><p><input name="hztjcheckbox" type="checkbox" id = "isNotDisVolGM"> 不显示项目分电压等级汇总信息</p></div>
+					<div id="disGMDisToChar"><p><input name="hztjcheckbox" type="checkbox" id = "isGMDisToChar"> 规模字符串显示</p></div>
+					<div id="disOnlyDisDownPlan"><p><input name="hztjcheckbox" type="checkbox" id = "isOnlyDisDownPlan"> 只显示已下达数据</p></div>
+					<div id="disDisConToNew" class="9002"><p><input name="hztjcheckbox" type="checkbox" id = "isDisConToNew"> 显示未确定续建转新开工项目</p></div>
+					<div id="disOnlyDisConToNew"  class="9002"><p><input name="hztjcheckbox" type="checkbox" id = "isOnlyDisConToNew"> 只显示未确定续建转新开工项目</p></div>
+					<div id="disNotDisItemStore"><p><input name="hztjcheckbox" type="checkbox" id = "isNotDisItemStore"> 隐藏项目评级</p></div>
+					<div id="disNotDisFund"><p><input name="hztjcheckbox" type="checkbox" id = "isNotDisFund"> 不显示资金来源</p></div>
+					<div id="disNotCountOnlyInv"  class="9701 9002 9001 9060"><p><input name="hztjcheckbox" type="checkbox" id = "isNotCountOnlyInv" class="9701"> 不汇总只有投资的项目</p></div>
+					<div id="disNotCountOnlyFund"  class="9701 9002 9001 9060"><p><input name="hztjcheckbox" type="checkbox" id = "isNotCountOnlyFund" checked class="9701"> 不汇总只有资金的项目</p></div>
+					<div id="disDisTjInterface"  class="9701 9001 9009 9018"><p><input name="hztjcheckbox" type="checkbox" id = "isDisTjInterface" class="9701"> 显示统计接口</p></div>
+					<div id="disOnlyDisSplitPack"><p><input name="hztjcheckbox" type="checkbox" id = "isOnlyDisSplitPack"> 仅显示有拆分情况的项目包</p></div>
+					<div id="disDisFrontMoney"><p><input name="hztjcheckbox" type="checkbox" id = "isDisFrontMoney"> 显示前期费</p></div>
+					<div id="disDisItemPlan" class="9002"><p><input name="hztjcheckbox" type="checkbox" id = "isDisItemPlan"> 显示项目上的计划</p></div>
+					<div id="disDirect" class="9009 9018"><p><input name="hztjcheckbox" type="checkbox" id = "isDirect"> 交流直流分组</p></div>
+					<div id="disVolSort" class="9009 9018"><p><input name="hztjcheckbox" type="checkbox" id = "isVolSort"> 电压等级分组</p></div>
+					<div id="disDisGWArea"><p><input name="hztjcheckbox" type="checkbox" id = "isDisGWArea"> 电压区域分组</p></div>
+					<div id="disDisFrontGM" class="9022"><p><input name="hztjcheckbox" type="checkbox" id = "isDisFrontGM"> 显示实际开工规模</p></div>
+					<div id="disWqdXjKg"><p><input name="hztjcheckbox" type="checkbox" id = "isWqdXjKg"> 未确定续建开工计划</p></div>
+					<div id="disNotShowCitySum"  class="9701 9002 9001 9009 9018"><p><input name="hztjcheckbox" type="checkbox" id = "iscityvisible" class="9701"> 不显示地市汇总</p></div>
+					<div id="disPackItemVisible"  class="9701 9002 9001"><p><input name="hztjcheckbox" type="checkbox" id = "ispackitemvisible" class="9701"> 打包项目按照明细显示</p></div>
+					<div id="disCompOrCitySum"  class="9701 9002 9001 9009 9018"><p><input name="hztjcheckbox" type="checkbox" id = "isCompOrCitySum" class="9701"> 只显示单位汇总信息</p></div>
+					<div id="disShowWbsOrItemCode" class="9701 9002 9001 9009 9018 9022"><p><input name="hztjcheckbox" type="checkbox" id = "isShowWbsOrItemCode" class="9701"> 显示企编及WBS编码</p></div>
+					<div id="disShowSecType" class="9002 9001 9018"><p><input name="hztjcheckbox" type="checkbox" id = "isShowSecType"> 显示二级类别</p></div>
+					<div id="disShowVoltage"><p><input name="hztjcheckbox" type="checkbox" id = "isShowVoltage"> 显示电压等级</p></div>
+					<div id="dshowChgLcbPlan" class="9009 9018"><p><input name="hztjcheckbox" type="checkbox" id = "showChgLcbPlan"> 显示调整计划项目</p></div>
+					<div id="disShowKypfnum" class="9002 9001 9009"><p><input name="hztjcheckbox" type="checkbox" id = "isShowKypfnum"> 显示可研批复/核准文号</p></div>
+					<div id="disShowVoltageSummary"><p><input name="hztjcheckbox" type="checkbox" id = "isShowVoltageSummary"> 显示电压等级汇总行</p></div>
+					<div id="disShowCompanyByGroup"><p><input name="hztjcheckbox" type="checkbox" id = "isShowCompanyByGroup"> 公司总部分单位显示</p></div>									
+					<div id="disndjhUserKgjh"><p><input name="hztjcheckbox" type="checkbox" id = "isndjhUserKgjh"> 年度计划取用开工计划值</p></div>									
+					<div id="disshowtzplan" class="9701"><p><input name="hztjcheckbox" type="checkbox" id = "isshowtzplan"> 只显示调整计划</p></div>									
+					<div id="ddxbf" class ="9011 9012 9011001 9051001  9051 9052 9052001 9002 9001 9009 9018 9907 9504 9502 9931 9932 9060 9022">
+						<p><input name="hztjcheckbox" type="checkbox" id = "dxbf"  class="9701"> 不显示东西帮扶项目</p>
+					</div>									
+					<div id="dnostartoption" class="9051001  9051"><p><input name="hztjcheckbox" type="checkbox" id = "nostartoption"> 不计争开项目数据</p></div>	
+					<div id="disShowItemDetail" class="9932"><p><input name="hztjcheckbox" type="checkbox" id = "isShowItemDetail"> 显示项目明细</p></div>
+				<br class="clear">
+			</fieldset>
+			</div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" id="modalConditionBtn">确定提交</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="superChooseModal" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog" style="width:262px">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="myModalLabel">高级筛选</h4>
+            </div>
+            <div class="modal-body">
+				<fieldset id="queryWinFieldSet" style="margin-left: 10px">
+			<div id="dcmbStartOption">
+				<p>
+					<LABEL id="tcmbStartOption" ACCESSKEY="1">&nbsp;&nbsp;开工类型：</LABEL>
+		            <input id="cmbStartOption" value="" size="12">
+	            </p>
+	        </div>
+			<div id="dcmbPutType1">
+				<p>
+					<LABEL id="tcmbPutType1" ACCESSKEY="1">&nbsp;&nbsp;投产类型：</LABEL>
+		            <input id="cmbPutType1" value="" size="12">
+	            </p>
+	        </div>
+	        <div id="dcmbBuildProcess1">
+				<p>
+					<LABEL id="tcmbBuildProcess1" ACCESSKEY="1">&nbsp;&nbsp;建设阶段：</LABEL>
+		            <input id="cmbBuildProcess1" value="" size="12">
+	            </p>
+	        </div>
+	       <!-- <div id="dcmbMonth">
+				<p>
+					<LABEL id="" ACCESSKEY="1">&nbsp;&nbsp;月份：</LABEL>
+		            <input id="cmbMonth1" value="1" size="6"  style="height: 24px;float:none;width:43px" class="Wdate" value="2019" id="cmbYear" onclick="WdatePicker({dateFmt:'MM',maxDate:'#F{$dp.$D(\'cmbMonth2\')}'})"/>
+	            	<LABEL id="" ACCESSKEY="1">&nbsp;至&nbsp;</LABEL>
+	            	<input id="cmbMonth2" value="12" size="6" style="height: 24px;float:none;width:43px" class="Wdate" value="2019" id="cmbYear" onclick="WdatePicker({dateFmt:'MM',minDate:'#F{$dp.$D(\'cmbMonth1\')}'})"/>
+	            </p>
+	        </div>-->
+	     <!--    <div id="dcmbMonth1">
+				<p>
+					<LABEL id="" ACCESSKEY="1">&nbsp;&nbsp;月份：</LABEL>
+		            <input id="cmbMonth3" value="" size="6">	            	
+	            </p>
+	        </div> -->
+	        <div id="monthTip" style="margin-top: 20px">
+		        <p>提示：月份筛选之后，1-12月份数据仍显示，</p>
+		        <p>改变的是【合计】列和其余汇总列的值。</p>
+	        </div>
+		</fieldset>
+			</div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" id="confirmSuperChoseBtn">确定</button>
+            </div>
+        </div>
+    </div>
+</div>
+	<script src="../../../plugins/js/jquery.min.js" type="text/javascript"></script>
+	<script src="../../../plugins/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+	<script src="../../../js/common/util.js" type="text/javascript"></script>
+	<script src="../../../js/common/common.js" type="text/javascript"></script>
+	<script src="../../../plugins/easyUI/js/jquery.easyui.min.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../../../plugins/easyUI/js/easyui-lang-zh_CN.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../../../js/common/ajaxfileupload.js" type="text/javascript"></script>
+   	<script src="../../../js/investimplement/planreport/common/Dictionary.js" type="text/javascript"></script>
+   	<script src="../../../js/investimplement/planreport/common/common.js" type="text/javascript"></script>
+   	<script src="../../../js/investimplement/planreport/common/map.js" type="text/javascript"></script>
+   	<script src="../../../js/investimplement/planreport/common/datagrid-scrollview.js" type="text/javascript"></script>
+   	<script src="../../../js/investimplement/planreport/reportutil.js" type="text/javascript"></script>
+   	<script src="../../../js/investimplement/planreport/reportGlobal.js" type="text/javascript"></script>
+   	<script src="../../../js/investimplement/planreport/reportPlugins.js" type="text/javascript"></script>
+   	<script src="../../../js/investimplement/planreport/planreport.js" type="text/javascript"></script>
+   	<script src="../../../plugins/My97DatePicker/WdatePicker.js" type="text/javascript"></script>
+   	<script type="text/javascript">
+ 	  	var repid = location.search.substring(1).toString();
+ 	  	content = {
+			currentPageText: "项目执行异常预警", //当前页名称
+			parentPageArr:[
+				{
+					text: "导航",			//第一个导航标签名称
+					url: "../../../html/navigation/navigation.jsp"				//第一个导航标签链接
+				},
+				{
+					text: "计划决策",		//第二个导航标签名称
+					url: "../../../html/navigation/navigation.jsp"				//第二个导航标签链接
+				},
+				{
+					text: "",		//第二个导航标签名称
+					url: "../../../html/navigation/navigation.jsp"				//第二个导航标签链接
+				}
+			]
+		}
+ 	  	switch (repid) {
+	  		case '8000':
+	 	  		content.parentPageArr[2].text = '建议计划';
+	 	  		content.currentPageText = '投资计划报表';
+	 	  		break;
+	 	  	case '9000':
+	 	  		content.parentPageArr[2].text = '综合计划';
+	 	  		content.currentPageText = '投资计划报表';
+	 	  		break;
+	 	  	case '9700':
+	 	  		content.parentPageArr[2].text = '调整计划';
+	 	  		content.currentPageText = '调整计划报表';
+	 	  		break;
+	 	  	case '9800':
+	 	  		content.parentPageArr[2].text = '三年计划';
+	 	  		content.currentPageText = '三年计划报表';
+	 	  		break;
+ 	  		
+ 	  	}
+ 		setTopNavigation("top_navigation", content);
+  	 	mAdjustPlanReport.initMoudle(repid);
+   	</script>
+</body>
+</html>
